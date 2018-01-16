@@ -13,8 +13,8 @@ class Row extends Component {
         title={this.props.text}
         onPress={this.props.onToggle}
         checked={complete}
-        style={[styles.text, complete && styles.complete]}
         textStyle={[styles.text, complete && styles.complete]}
+        containerStyle={styles.container}
       />
     );
   }
