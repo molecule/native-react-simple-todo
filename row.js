@@ -17,6 +17,8 @@ class Row extends Component {
         title={this.props.text}
         onPress={this.props.onToggle}
         checked={complete}
+        style={[styles.text, complete && styles.complete]}
+        textStyle={[styles.text, complete && styles.complete]}
       />
       </View>
     );
@@ -33,7 +35,6 @@ const styles = StyleSheet.create({
   textWrap: {
     flex: 1,
     marginHorizontal: 10,
-
   },
   text: {
     fontSize: 24,
