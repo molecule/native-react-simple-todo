@@ -9,10 +9,6 @@ class Row extends Component {
     const {complete} = this.props;
     console.log("render of row, complete: " + complete);
     return (
-      <View style={styles.container}>
-      <View style={styles.textWrap}>
-        <Text style={[styles.text, complete && styles.complete]}>{this.props.text}</Text>
-      </View>
       <CheckBox
         title={this.props.text}
         onPress={this.props.onToggle}
@@ -20,7 +16,6 @@ class Row extends Component {
         style={[styles.text, complete && styles.complete]}
         textStyle={[styles.text, complete && styles.complete]}
       />
-      </View>
     );
   }
 }
