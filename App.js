@@ -81,9 +81,6 @@ class App extends Component {
                 />
               )
             }}
-            renderSeparator={(sectionId, rowId) => {
-              return <View key={rowId} style={styles.separator}/>
-            }}
           />
         </View>
         <Footer />
