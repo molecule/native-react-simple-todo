@@ -9,13 +9,15 @@ class Row extends Component {
     const {complete} = this.props;
     console.log("render of row, complete: " + complete);
     return (
+      <View style={styles.container}>
       <CheckBox
         title={this.props.text}
         onPress={this.props.onToggle}
         checked={complete}
         textStyle={[styles.text, complete && styles.complete]}
-        containerStyle={styles.container}
+        containerStyle={styles.checkbox}
       />
+      </View>
     );
   }
 }
@@ -24,8 +26,11 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
     flexDirection: "row",
-    alignItems: "flex-start",
+    alignItems: "stretch",
     justifyContent: "space-between"
+  },
+  checkbox: {
+    flex: 1
   },
   textWrap: {
     flex: 1,
