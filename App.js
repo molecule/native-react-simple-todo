@@ -46,18 +46,6 @@ class App extends Component {
     this.setSource(newItems, newItems);
   }
 
-  handleToggleCheck(key, complete) {
-    const newItems = this.state.items.map((item) => {
-      if (item.key != key) return item;
-      return {
-        ... item,
-        complete
-      }
-    })
-
-    this.setSource(newItems, newItems);
-  }
-
   handleAddItem() {
     if (!this.state.value) return;
     const newItems = [
@@ -88,7 +76,6 @@ class App extends Component {
               return (
                 <Row
                   key={key}
-                  //toggleCheck={() => this.handleToggleCheck(key, complete)}
                   onToggle={() => this.handleToggleComplete(key, !value.complete)}
                   {...value}
                 />
