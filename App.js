@@ -4,6 +4,7 @@ import Header from "./header";
 import Footer from "./footer";
 import Row from "./row";
 import CheckboxRow from "./checkboxRow";
+import Swipeout from 'react-native-swipeout';
 
 const filterItems = (filter, items) => {
   return items.filter((item) => {
@@ -55,7 +56,9 @@ class App extends Component {
     })
     AsyncStorage.setItem("items", JSON.stringify(items));
   }
-
+  deleteNote(rowData) {
+    console.log("deleteNote placeholder");
+  }
   handleUpdateText(key, text) {
     const newItems = this.state.items.map((item) => {
       if (item.key !== key) return item;
@@ -131,7 +134,17 @@ class App extends Component {
             dataSource={this.state.dataSource}
             onScroll={() => Keyboard.dismiss()}
             renderRow={({ key, ...value}) => {
+              let swipeBtns = [{
+                text: 'Delete',
+                backgroundColor: 'red',
+                underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+                onPress: () => { this.deleteNote(rowData) }
+              }];
+
               return (
+                <Swipeout 
+                  right={swipeBtns}
+                  backgroundColor= 'transparent'>
                 <Row
                   key={key}
                   onToggle={() => this.handleToggleComplete(key, !value.complete)}
@@ -140,6 +153,7 @@ class App extends Component {
                   onToggleEdit={(editing) => this.handleToggleEditing(key, editing)}
                   {...value}
                 />
+                </Swipeout>
               )
             }}
           />
