@@ -1,3 +1,10 @@
+## My notes
+Convert an existing project to expo: https://docs.expo.io/versions/v17.0.0/introduction/faq.html#how-do-i-get-my-existing-react-native-project-running-with-expo
+
+Complaints about expo: https://medium.com/2-minute-revolution-developer-blog/our-review-of-expo-and-why-we-dont-think-it-s-ready-for-prime-time-bb0897657295
+
+more instructions: https://github.com/expo/xde#converting-an-existing-project-to-work-with-expo
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
