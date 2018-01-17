@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Switch } from "react-native";
+import { View, Text, StyleSheet, Switch, TouchableOpacity } from "react-native";
 import { ListItem, CheckBox } from 'react-native-elements';
 
 class Row extends Component {
@@ -17,6 +17,9 @@ class Row extends Component {
         textStyle={[styles.text, complete && styles.complete]}
         containerStyle={styles.checkbox}
       />
+      <TouchableOpacity onPress={this.props.onRemove}>
+        <Text style={styles.destroy}>X</Text>
+      </TouchableOpacity>
       </View>
     );
   }
@@ -42,6 +45,10 @@ const styles = StyleSheet.create({
   },
   complete: {
       textDecorationLine: "line-through"
+  },
+  destroy: {
+    fontSize: 24,
+    color: "#cc9a9a"
   }
 })
 export default Row;
