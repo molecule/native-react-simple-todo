@@ -5,12 +5,21 @@ import Footer from "./footer";
 import Row from "./row";
 import CheckboxRow from "./checkboxRow";
 
+const filterItems = (filter, items) => {
+  return items.filter((item) => {
+    if (filter === "ALL") return true;
+    if (filter === "COMPLETED") return item.complete;
+    if (filter === "ACTIVE") return !item.complete;
+  })
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       value: "",
+      filter: "ALL",
       items: [],
       dataSource: ds.cloneWithRows([])
     }
@@ -18,6 +27,7 @@ class App extends Component {
     this.handleAddItem = this.handleAddItem.bind(this);
     this.handleToggleComplete = this.handleToggleComplete.bind(this);
     this.handleRemoveItem = this.handleRemoveItem.bind(this);
+    this.handleFilter = this.handleFilter.bind(this);
   }
 
   setSource(items, itemsDatasource, otherState = {}) {
@@ -26,6 +36,10 @@ class App extends Component {
       dataSource: this.state.dataSource.cloneWithRows(itemsDatasource),
       ...otherState
     })
+  }
+
+  handleFilter(filter) {
+    this.setSource(this.state.items, filterItems(filter, this.state.items), { filter })
   }
 
   handleRemoveItem(key) {
@@ -92,7 +106,9 @@ class App extends Component {
             }}
           />
         </View>
-        <Footer />
+        <Footer 
+          onFilter={this.handleFilter}
+          filter={this.state.filter}/>
       </View>
     );
   }
