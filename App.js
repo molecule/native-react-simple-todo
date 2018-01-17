@@ -94,21 +94,13 @@ class App extends Component {
   }
 
   handleToggleComplete(key, complete) {
-    console.log("handleToggleComplete, complete: " + complete);
     const newItems = this.state.items.map((item) => {
-      console.log("inside map, item: " + item + ", item.key: " + item.key + ", key: " + key)
-      console.log("all keys: " + Object.keys(item));
-      
-
       if (item.key != key) return item;
       return {
         ... item,
         complete
       }
     })
-
-    console.log("found the right key");
-    console.log("calling setSource");
     this.setSource(newItems, filterItems(this.state.filter, newItems));
   }
 
