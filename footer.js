@@ -17,6 +17,9 @@ class Footer extends Component {
             <Text>Completed</Text>
           </TouchableOpacity>
         </View>
+        <TouchableOpacity onPress={this.props.onClearComplete}>
+          <Text>Clear Completed</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -38,7 +41,7 @@ const styles = StyleSheet.create({
     borderColor: "transparent"
   },
   selected: {
-    borderColor: "rgba(175, 47, 47, .2)"
+    borderColor: "rgba(0, 0, 0, .2)"
   }
 })
 export default Footer;
