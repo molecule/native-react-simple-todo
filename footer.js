@@ -17,7 +17,7 @@ class Footer extends Component {
             <Text>Completed</Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={this.props.onClearComplete}>
+        <TouchableOpacity style={styles.filter} onPress={this.props.onClearComplete}>
           <Text>Clear Completed</Text>
         </TouchableOpacity>
       </View>
