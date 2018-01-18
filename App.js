@@ -56,9 +56,15 @@ class App extends Component {
     })
     AsyncStorage.setItem("items", JSON.stringify(items));
   }
-  deleteNote(rowData) {
+
+  deleteNote(key) {
     console.log("deleteNote placeholder");
+    const newItems = this.state.items.map((item) => {
+      if (item.key !== key) return item;
+    })
+    this.setSource(newItems, filterItems(this.state.filter, newItems));
   }
+
   handleUpdateText(key, text) {
     const newItems = this.state.items.map((item) => {
       if (item.key !== key) return item;
@@ -138,7 +144,7 @@ class App extends Component {
                 text: 'Delete',
                 backgroundColor: 'red',
                 underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-                onPress: () => { this.deleteNote(rowData) }
+                onPress: () => { this.deleteNote(key) }
               }];
 
               return (
