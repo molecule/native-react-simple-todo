@@ -28,9 +28,9 @@ class Row extends Component {
     const removeButton = (
       <TouchableOpacity onPress={this.props.onRemove}>
       <Icon
-        name='md-close'
-        type='ionicon'
-        color='#f50'
+        name='edit'
+        type='feather'
+        color='rgba(0,0,0,0.6)'
         size={30} />
       </TouchableOpacity>
     )
