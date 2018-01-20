@@ -8,8 +8,8 @@ import CheckboxRow from "./checkboxRow";
 const filterItems = (filter, items) => {
   return items.filter((item) => {
     if (filter === "ALL") return true;
-    if (filter === "COMPLETED") return item.complete;
-    if (filter === "ACTIVE") return !item.complete;
+    if (filter === "OPEN") return !item.complete && !item.scheduled && !item.future;
+    if (filter === "ACTIVE") return !item.complete && !item.future;
   })
 }
 
@@ -111,7 +111,9 @@ class App extends Component {
       {
         key: Date.now(),
         text: this.state.value,
-        complete: false
+        complete: false,
+        scheduled: false,
+        future: true
       }
     ]
     this.setSource(newItems, filterItems(this.state.filter, newItems), { value: "" })
