@@ -67,6 +67,7 @@ class App extends Component {
     this.setSource(newItems, filterItems(this.state.filter, newItems));
   }
   handleToggleEditing(key, editing) {
+    console.log("handleToggleEditing");
     const newItems = this.state.items.map((item) => {
       if (item.key !== key) return item;
       return {

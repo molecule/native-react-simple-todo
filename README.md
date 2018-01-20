@@ -15,6 +15,9 @@ Do as much w one hand as possible.
 Thumb interactions.
 Support needs (view completed tasks, categorization, separate lists)
 
+Bugs?
+After editing, hiting hte save button takes two taps because the keyboard is hogging focus?
+
 
 ### Installing
 Install react: https://facebook.github.io/react-native/docs/getting-started.html

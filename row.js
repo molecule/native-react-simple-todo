@@ -26,7 +26,7 @@ class Row extends Component {
     )
 
     const editButton = (
-      <TouchableOpacity onPress={this.props.onRemove}>
+      <TouchableOpacity onPress={() => this.props.onToggleEdit(true)}>
       <Icon
         name='edit'
         type='feather'
