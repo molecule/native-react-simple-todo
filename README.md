@@ -1,4 +1,16 @@
 ## My notes
+### Todo (haha)
+
+1. Ability to edit tags. (move something from future --> active, or schedule it).
+- This could be hashtags but it would be nice to see a drop-down suggestion list.
+2. Nested lists? Lists of lists? Whatever architecture works?
+3. 
+
+Overarching goals:
+Do as much w one hand as possible.
+Thumb interactions.
+Support needs (view completed tasks, categorization, separate lists)
+
 
 ### Installing
 Install react: https://facebook.github.io/react-native/docs/getting-started.html
