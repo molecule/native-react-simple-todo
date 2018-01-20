@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Platform, ListView, Keyboard, AsyncStorage, ActivityIndicator } from "react-native";
+import {MenuProvider} from "react-native-popup-menu";
 import Header from "./header";
 import Footer from "./footer";
 import Row from "./row";
@@ -121,6 +122,7 @@ class App extends Component {
   }
   render() {
     return (
+      <MenuProvider style={{flexDirection: 'column'}}>
       <View style={styles.container}>
         <Header 
           value={this.state.value}
@@ -158,6 +160,7 @@ class App extends Component {
           />
         </View>}
       </View>
+      </MenuProvider>
     );
   }
 }
