@@ -21,11 +21,11 @@ class Row extends Component {
         checked={complete}
         textStyle={[styles.text, complete && styles.complete]}
         containerStyle={styles.checkbox}
-        onLongPress={() => this.props.onToggleEdit(true)}
+        //onLongPress={() => this.props.onToggleEdit(true)}
       />
     )
 
-    const removeButton = (
+    const editButton = (
       <TouchableOpacity onPress={this.props.onRemove}>
       <Icon
         name='edit'
@@ -56,7 +56,7 @@ class Row extends Component {
     return (
       <View style={styles.container}>
       {this.props.editing ? editingComponent : checkboxComponent}
-      {this.props.editing ? saveButton : removeButton}
+      {this.props.editing ? saveButton : editButton}
       </View>
     );
   }
