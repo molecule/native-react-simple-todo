@@ -102,7 +102,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   complete: {
-      textDecorationLine: "line-through"
+      textDecorationLine: "line-through",
+      color: "rgba(0,0,0,0.15)"
   }
 })
 export default Row;
