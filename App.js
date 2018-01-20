@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Platform, ListView, Keyboard, AsyncStorage, ActivityIndicator } from "react-native";
-import {MenuProvider, Menu, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
+import { View, Text, StyleSheet, Platform, ListView, Keyboard, AsyncStorage, ActivityIndicator, ActionSheetIOS } from "react-native";
 import Header from "./header";
 import Footer from "./footer";
 import Row from "./row";
@@ -33,6 +32,7 @@ class App extends Component {
     this.handleClearComplete = this.handleClearComplete.bind(this);
     this.handleUpdateText = this.handleUpdateText.bind(this);
     this.handleToggleEditing = this.handleToggleEditing.bind(this);
+    this.handleOpenContextMenu = this.handleOpenContextMenu.bind(this);
   }
 
   componentWillMount() {
@@ -56,6 +56,35 @@ class App extends Component {
     })
     AsyncStorage.setItem("items", JSON.stringify(items));
   }
+
+  handleOpenContextMenu(key) {
+    console.log("openContextMenu...key:" + key)
+    ActionSheetIOS.showActionSheetWithOptions({
+      options: ['Active', 'Scheduled', 'Future', 'Cancel'],
+      //destructiveButtonIndex: 1,
+      cancelButtonIndex: 3,
+    },
+    (buttonIndex) => {console.log("selected buttuonIndex: "+ buttonIndex);});
+      
+      {
+        /*const newItems = this.state.items.map((item) => {
+            if (item.key !== key) return item;
+            if (buttonIndex === 1) {  // active
+              return {
+                ...item,
+                !active
+              }
+            } if (buttonIndex === 2) { // scheduled
+              return {
+                ...item,
+                !scheduled
+              }
+            }
+          })
+        */}
+  };
+
+  
 
   handleUpdateText(key, text) {
     const newItems = this.state.items.map((item) => {
@@ -113,6 +142,7 @@ class App extends Component {
       {
         key: Date.now(),
         text: this.state.value,
+        active: false,
         complete: false,
         scheduled: false,
         future: true
@@ -122,7 +152,6 @@ class App extends Component {
   }
   render() {
     return (
-      <MenuProvider style={{flexDirection: 'column'}}>
       <View style={styles.container}>
         <Header 
           value={this.state.value}
@@ -137,23 +166,15 @@ class App extends Component {
             onScroll={() => Keyboard.dismiss()}
             renderRow={({ key, ...value}) => {
               return (
-                <Menu onSelect={value => alert(`Selected number: ${value}`)}>
-                <MenuTrigger text="..." />
-                <MenuOptions>
-                <MenuOption onSelect={() => alert(`Save`)} text="Save" />
-                <MenuOption onSelect={() => alert(`Delete`)}>
-                    <Text style={{ color: 'red' }}>Delete</Text>
-                  </MenuOption>
                 <Row
                   key={key}
                   onToggle={() => this.handleToggleComplete(key, !value.complete)}
                   onRemove={() => this.handleRemoveItem(key)}
                   onUpdate={(text) => this.handleUpdateText(key, text)}
                   onToggleEdit={(editing) => this.handleToggleEditing(key, editing)}
+                  onOpenMenu={() => this.handleOpenContextMenu(key)}
                   {...value}
                 />
-                </MenuOptions>
-                </Menu>
               )
             }}
           />
@@ -169,7 +190,6 @@ class App extends Component {
           />
         </View>}
       </View>
-      </MenuProvider>
     );
   }
 }

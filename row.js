@@ -4,7 +4,6 @@ import { ListItem, CheckBox, Icon } from 'react-native-elements';
 
 class Row extends Component {
 
-
   render() {
     const {complete} = this.props;
 
@@ -21,7 +20,7 @@ class Row extends Component {
         checked={complete}
         textStyle={[styles.text, complete && styles.complete]}
         containerStyle={styles.checkbox}
-        //onLongPress={() => this.props.onToggleEdit(true)}
+        onLongPress={this.props.onOpenMenu}
       />
     )
 
