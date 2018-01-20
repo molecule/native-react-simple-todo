@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Platform, ListView, Keyboard, AsyncStorage, ActivityIndicator } from "react-native";
-import {MenuProvider} from "react-native-popup-menu";
+import {MenuProvider, Menu, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
 import Header from "./header";
 import Footer from "./footer";
 import Row from "./row";
@@ -137,6 +137,13 @@ class App extends Component {
             onScroll={() => Keyboard.dismiss()}
             renderRow={({ key, ...value}) => {
               return (
+                <Menu onSelect={value => alert(`Selected number: ${value}`)}>
+                <MenuTrigger text="..." />
+                <MenuOptions>
+                <MenuOption onSelect={() => alert(`Save`)} text="Save" />
+                <MenuOption onSelect={() => alert(`Delete`)}>
+                    <Text style={{ color: 'red' }}>Delete</Text>
+                  </MenuOption>
                 <Row
                   key={key}
                   onToggle={() => this.handleToggleComplete(key, !value.complete)}
@@ -145,6 +152,8 @@ class App extends Component {
                   onToggleEdit={(editing) => this.handleToggleEditing(key, editing)}
                   {...value}
                 />
+                </MenuOptions>
+                </Menu>
               )
             }}
           />
