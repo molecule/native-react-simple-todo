@@ -2,7 +2,11 @@
 ### Todo (haha)
 
 1. Ability to edit tags. (move something from future --> active, or schedule it).
-- This could be hashtags but it would be nice to see a drop-down suggestion list.
+- This could be hashtags but it would be nice to see a drop-down suggestion list. (or both the way RTM does it).
+- color coded? so long-press could move to editing mode, which also reveals a little "tag box" that can also be long-pressed to reveal other options?
+- slide to edit text rather than long-press.
+- two buttons: edit text, delete, rather than long-press (prob maps to desktop best)
+- could remove delete entirely and only use "clear completed", then have a single button for editing rather than deleting. Long-press would be drop-down or something for tag editing. Hmm leaning this direction.
 2. Nested lists? Lists of lists? Whatever architecture works?
 3. 
 
